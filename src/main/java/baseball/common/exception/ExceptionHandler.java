@@ -13,6 +13,6 @@ public class ExceptionHandler {
 	}
 	
 	public void handleException(final Exception exception) {
-		writer.writeLine(EXCEPTION_MESSAGE_PREFIX + exception.getMessage());
+		writer.write(EXCEPTION_MESSAGE_PREFIX + exception.getMessage() + "\n");
 	}
 }

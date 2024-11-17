@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.common.validator.ParamsValidator;
+import baseball.domain.baseballRound.BaseballRound;
 import baseball.service.NumberProvider;
 import baseball.service.RoundResultConsumer;
 
