@@ -1,6 +1,7 @@
 package baseball.game.controller;
 
 import baseball.baseNumber.BaseNumber;
+import baseball.game.controller.constant.InputMessage;
 import baseball.game.controller.constant.OutputMessage;
 import baseball.view.Inputview;
 import baseball.view.OutputView;
@@ -24,6 +25,7 @@ public class GameController {
     private void playSingle() {
         outputView.print(OutputMessage.GAME_START);
         BaseNumber number = BaseNumber.create();
+        inputview.promptUserInput(InputMessage.GUESS_BASE_NUMBER);
     }
 
     private boolean UserWantsToPlayMore() {
