@@ -97,7 +97,13 @@ public class GameController {
     }
 
     private boolean validateGameContinue(String input) {
-        return input.equals("1");
+        if (input.equals("1")) {
+            return true;
+        }
+        if (input.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
 
 }
