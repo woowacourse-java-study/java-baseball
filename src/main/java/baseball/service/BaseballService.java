@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.domain.BaseballGame;
 import baseball.domain.BaseballNumbers;
+import baseball.domain.BaseballRound;
 import baseball.service.numberPicker.NumberPicker;
 
 public class BaseballService {
@@ -14,6 +15,7 @@ public class BaseballService {
 	
 	public BaseballGame createBaseballGame() {
 		BaseballNumbers baseballNumbers = BaseballNumbers.from(numberPicker);
-		return new BaseballGame(baseballNumbers);
+		BaseballRound baseballRound = new BaseballRound(baseballNumbers);
+		return new BaseballGame(baseballRound);
 	}
 }

@@ -8,11 +8,11 @@ import java.util.List;
 
 public class BaseballGame {
 	
-	private final BaseballNumbers baseballNumbers;
+	private final BaseballRound baseballRound;
 	
-	public BaseballGame(BaseballNumbers baseballNumbers) {
-		ParamsValidator.validateParamsNotNull(baseballNumbers);
-		this.baseballNumbers = baseballNumbers;
+	public BaseballGame(BaseballRound baseballRound) {
+		ParamsValidator.validateParamsNotNull(baseballRound);
+		this.baseballRound = baseballRound;
 	}
 	
 	public BaseballRoundResult play(
@@ -21,16 +21,10 @@ public class BaseballGame {
 	) {
 		BaseballRoundResult baseballRoundResult;
 		do {
-			baseballRoundResult = playOneRound(numberProvider);
+			baseballRoundResult = baseballRound.playOneRound(numberProvider);
 			roundResultConsumer.consume(baseballRoundResult);
 		} while (shouldContinuePlay(baseballRoundResult));
 		return baseballRoundResult;
-	}
-	
-	private BaseballRoundResult playOneRound(NumberProvider numberProvider) {
-		List<Integer> numbers = numberProvider.provide();
-		BaseballNumbers tryBaseballNumbers = BaseballNumbers.from(numbers);
-		return baseballNumbers.getRoundResult(tryBaseballNumbers);
 	}
 	
 	private static boolean shouldContinuePlay(BaseballRoundResult baseballRoundResult) {
