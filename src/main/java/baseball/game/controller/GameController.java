@@ -10,7 +10,9 @@ import baseball.view.Inputview;
 import baseball.view.OutputView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GameController {
 
@@ -31,7 +33,12 @@ public class GameController {
     private void playSingle() {
         outputView.print(OutputMessage.GAME_START);
         BaseNumber number = BaseNumber.create();
-        GuessResult guessResult = null;
+        GuessUntilFullStrike(number);
+        outputView.print(OutputMessage.GAME_END);
+    }
+
+    private void GuessUntilFullStrike(BaseNumber number) {
+        GuessResult guessResult;
         do {
             String input = inputview.promptUserInput(InputMessage.GUESS_BASE_NUMBER);
             List<Integer> inputNumbers = validateGuessNumber(input);
@@ -39,7 +46,6 @@ public class GameController {
             guessResult = number.match(guessNumber);
             outputView.print(guessResult);
         } while(!guessResult.fullStrike());
-
     }
 
     private List<Integer> validateGuessNumber(String input) {
@@ -67,7 +73,13 @@ public class GameController {
     }
 
     private boolean UserWantsToPlayMore() {
-        return false;
+        String input = inputview.promptUserInput(InputMessage.GAME_CONTINUE);
+        boolean gameContinue = validateGameContinue(input);
+        return gameContinue;
+    }
+
+    private boolean validateGameContinue(String input) {
+        return input.equals("1");
     }
 
 }
