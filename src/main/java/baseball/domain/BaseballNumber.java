@@ -19,7 +19,7 @@ public class BaseballNumber {
 	
 	private static void validate(int number) {
 		if (number < MIN_NUMBER || number > MAX_NUMBER) {
-			throw BaseballExceptions.ILLEGAL_ARGUMENT.get();
+			throw BaseballExceptions.BASEBALL_NUMBER_RANGE_ILLEGAL.get();
 		}
 	}
 	

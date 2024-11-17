@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class BaseballNumbers {
 	
-	public static final int BASEBALL_NUMBERS_SIZE = 3;
+	public static final int BASEBALL_NUMBERS_COUNT = 3;
 	
 	private final List<BaseballNumber> baseballNumbers;
 	
@@ -21,11 +21,11 @@ public class BaseballNumbers {
 	}
 	
 	private static void validate(List<BaseballNumber> baseballNumbers) {
-		if (baseballNumbers.size() != BASEBALL_NUMBERS_SIZE) {
-			throw BaseballExceptions.ILLEGAL_ARGUMENT.get();
+		if (baseballNumbers.size() != BASEBALL_NUMBERS_COUNT) {
+			throw BaseballExceptions.BASEBALL_NUMBERS_COUNT_ILLEGAL.get();
 		}
 		if (isNotUnique(baseballNumbers)) {
-			throw BaseballExceptions.ILLEGAL_ARGUMENT.get();
+			throw BaseballExceptions.BASEBALL_NUMBERS_DUPLICATED.get();
 		}
 	}
 	
@@ -35,7 +35,7 @@ public class BaseballNumbers {
 	
 	public static BaseballNumbers from(NumberPicker numberPicker) {
 		Set<BaseballNumber> baseballNumbers = new HashSet<>();
-		while(baseballNumbers.size() < BASEBALL_NUMBERS_SIZE) {
+		while(baseballNumbers.size() < BASEBALL_NUMBERS_COUNT) {
 			baseballNumbers.add(BaseballNumber.from(numberPicker));
 		}
 		return new BaseballNumbers(baseballNumbers.stream().toList());
@@ -48,7 +48,7 @@ public class BaseballNumbers {
 	}
 	
 	public static boolean isAllStrike(int strikeCount) {
-		return BASEBALL_NUMBERS_SIZE == strikeCount;
+		return BASEBALL_NUMBERS_COUNT == strikeCount;
 	}
 	
 	public BaseballRoundResult calculateStrikeBall(BaseballNumbers targetBaseballNumbers) {
@@ -60,7 +60,7 @@ public class BaseballNumbers {
 	
 	private int calculateStrikeCount(BaseballNumbers targetBaseballNumbers) {
 		int strikeCount = 0;
-		for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
+		for (int i = 0; i < BASEBALL_NUMBERS_COUNT; i++) {
 			BaseballNumber baseballNumber = baseballNumbers.get(i);
 			if (targetBaseballNumbers.containsInExactPosition(baseballNumber, i)) {
 				strikeCount++;
@@ -71,7 +71,7 @@ public class BaseballNumbers {
 	
 	private int calculateBallCount(BaseballNumbers targetBaseballNumbers) {
 		int ballCount = 0;
-		for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
+		for (int i = 0; i < BASEBALL_NUMBERS_COUNT; i++) {
 			BaseballNumber baseballNumber = baseballNumbers.get(i);
 			if (targetBaseballNumbers.containsInOtherPosition(baseballNumber, i)) {
 				ballCount++;
@@ -85,7 +85,7 @@ public class BaseballNumbers {
 	}
 	
 	private boolean containsInOtherPosition(BaseballNumber baseballNumber, int position) {
-		for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
+		for (int i = 0; i < BASEBALL_NUMBERS_COUNT; i++) {
 			if (baseballNumbers.get(i).equals(baseballNumber) && i != position) {
 				return true;
 			}
