@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.common.dto;
 
 public record BaseballRoundResult(
 		int strikeCount,

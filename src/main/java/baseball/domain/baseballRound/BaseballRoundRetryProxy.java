@@ -1,8 +1,8 @@
 package baseball.domain.baseballRound;
 
-import baseball.service.RetryHandler;
-import baseball.domain.BaseballRoundResult;
+import baseball.common.dto.BaseballRoundResult;
 import baseball.service.NumberProvider;
+import baseball.service.RetryHandler;
 
 public class BaseballRoundRetryProxy implements BaseballRound {
 	

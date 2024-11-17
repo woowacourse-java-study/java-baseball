@@ -1,8 +1,8 @@
 package baseball.domain.baseballRound;
 
+import baseball.common.dto.BaseballRoundResult;
 import baseball.common.validator.ParamsValidator;
 import baseball.domain.BaseballNumbers;
-import baseball.domain.BaseballRoundResult;
 import baseball.service.NumberProvider;
 
 import java.util.List;

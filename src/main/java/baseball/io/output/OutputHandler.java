@@ -1,7 +1,6 @@
 package baseball.io.output;
 
-import baseball.domain.BaseballNumbers;
-import baseball.domain.BaseballRoundResult;
+import baseball.common.dto.BaseballRoundResult;
 import baseball.io.writer.Writer;
 
 public class OutputHandler {

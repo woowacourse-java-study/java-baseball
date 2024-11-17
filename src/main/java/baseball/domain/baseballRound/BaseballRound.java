@@ -1,6 +1,6 @@
 package baseball.domain.baseballRound;
 
-import baseball.domain.BaseballRoundResult;
+import baseball.common.dto.BaseballRoundResult;
 import baseball.service.NumberProvider;
 
 public interface BaseballRound {

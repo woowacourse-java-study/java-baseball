@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.domain.BaseballRoundResult;
+import baseball.common.dto.BaseballRoundResult;
 
 @FunctionalInterface
 public interface RoundResultConsumer {
