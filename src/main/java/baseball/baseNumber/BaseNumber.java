@@ -30,14 +30,36 @@ public class BaseNumber {
 
     public GuessResult match(GuessNumber guessNumber) {
         int strike = checkStrike(guessNumber);
-        int ball = checkBall(guessNumber);
-        return GuessResult.from(strike, ball);
+        int temporaryBall = checkTemporaryBall(guessNumber);
+        return GuessResult.from(strike, temporaryBall - strike);
     }
 
-    private int checkBall(GuessNumber guessNumber) {
-
+    private int checkStrike(GuessNumber guessNumber) {
+        int strike = 0;
+        for (int i = 0; i < Rules.BASE_NUMBER_COUNT; ++i) {
+            int singleGuessNumber = guessNumber.numbers.get(i);
+            if (isStrike(singleGuessNumber, numbers.get(i))) {
+                strike++;
+            }
+        }
+        return strike;
     }
 
-    private void checkStrike(GuessNumber guessNumber) {
+    private int checkTemporaryBall(GuessNumber guessNumber) {
+        int ball = 0;
+        for (int i = 0; i < Rules.BASE_NUMBER_COUNT; ++i) {
+            if (isBall(guessNumber.numbers.get(i))) {
+                ball++;
+            }
+        }
+        return ball;
+    }
+
+    private boolean isStrike(int guessNumber, int baseNumber) {
+        return guessNumber == baseNumber;
+    }
+
+    private boolean isBall(int singleGuessNumber) {
+        return numbers.contains(singleGuessNumber);
     }
 }

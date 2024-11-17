@@ -5,6 +5,7 @@ import baseball.game.controller.constant.InputMessage;
 import baseball.game.controller.constant.OutputMessage;
 import baseball.game.controller.constant.Rules;
 import baseball.guessNumber.GuessNumber;
+import baseball.guessResult.GuessResult;
 import baseball.view.Inputview;
 import baseball.view.OutputView;
 
@@ -33,6 +34,7 @@ public class GameController {
         String input = inputview.promptUserInput(InputMessage.GUESS_BASE_NUMBER);
         List<Integer> inputNumbers = validateGuessNumber(input);
         GuessNumber guessNumber = GuessNumber.from(inputNumbers);
+        GuessResult guessResult = number.match(guessNumber);
     }
 
     private List<Integer> validateGuessNumber(String input) {
