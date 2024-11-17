@@ -8,6 +8,7 @@ import baseball.guessNumber.GuessNumber;
 import baseball.guessResult.GuessResult;
 import baseball.view.Inputview;
 import baseball.view.OutputView;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -32,9 +33,18 @@ public class GameController {
 
     private void playSingle() {
         outputView.print(OutputMessage.GAME_START);
-        BaseNumber number = BaseNumber.create();
+        BaseNumber number = BaseNumber.from(createRandomDistictNumbers());
         GuessUntilFullStrike(number);
         outputView.print(OutputMessage.GAME_END);
+    }
+
+    private Set<Integer> createRandomDistictNumbers() {
+        Set<Integer> distinctNumbers = new HashSet<>();
+        while(distinctNumbers.size() < Rules.BASE_NUMBER_COUNT) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            distinctNumbers.add(randomNumber);
+        }
+        return distinctNumbers;
     }
 
     private void GuessUntilFullStrike(BaseNumber number) {

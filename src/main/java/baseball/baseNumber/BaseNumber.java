@@ -17,14 +17,17 @@ public class BaseNumber {
         this.numbers = new ArrayList<>(numbers);
     }
 
-    public static BaseNumber create() {
-        Set<Integer> distinctNumbers = new HashSet<>();
-        while(distinctNumbers.size() < Rules.BASE_NUMBER_COUNT) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            distinctNumbers.add(randomNumber);
-        }
-        return new BaseNumber(distinctNumbers.stream().toList());
+    public static BaseNumber from(Set<Integer> numbers) {
+        validateCount(numbers);
+        return new BaseNumber(numbers.stream().toList());
     }
+
+    private static void validateCount(Set<Integer> numbers) {
+        if (numbers.size() != Rules.BASE_NUMBER_COUNT) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 
     public GuessResult match(GuessNumber guessNumber) {
         int strike = checkStrike(guessNumber);
