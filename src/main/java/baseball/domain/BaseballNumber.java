@@ -3,8 +3,6 @@ package baseball.domain;
 import baseball.common.exception.BaseballExceptions;
 import baseball.service.numberPicker.NumberPicker;
 
-import java.util.List;
-
 public class BaseballNumber {
 	
 	private static final int MIN_NUMBER = 1;
@@ -23,8 +21,12 @@ public class BaseballNumber {
 		}
 	}
 	
-	public static BaseballNumber generate(NumberPicker numberPicker) {
+	public static BaseballNumber from(NumberPicker numberPicker) {
 		int number = numberPicker.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+		return new BaseballNumber(number);
+	}
+	
+	public static BaseballNumber from(int number) {
 		return new BaseballNumber(number);
 	}
 }

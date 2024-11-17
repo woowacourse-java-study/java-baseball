@@ -25,11 +25,17 @@ public class BaseballNumbers {
 		}
 	}
 	
-	public static BaseballNumbers generate(NumberPicker numberPicker) {
+	public static BaseballNumbers from(NumberPicker numberPicker) {
 		List<BaseballNumber> baseballNumbers = new ArrayList<>();
 		for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
-			baseballNumbers.add(BaseballNumber.generate(numberPicker));
+			baseballNumbers.add(BaseballNumber.from(numberPicker));
 		}
 		return new BaseballNumbers(baseballNumbers);
+	}
+	
+	public static BaseballNumbers from(List<Integer> numbers) {
+		return new BaseballNumbers(numbers.stream()
+				.map(BaseballNumber::from)
+				.toList());
 	}
 }
