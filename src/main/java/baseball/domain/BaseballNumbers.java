@@ -38,4 +38,23 @@ public class BaseballNumbers {
 				.map(BaseballNumber::from)
 				.toList());
 	}
+	
+	public BaseballRoundResult getRoundResult(BaseballNumbers targetBaseballNumbers) {
+		int strikeCount = 0;
+		int ballCount = 0;
+		for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
+			for (int j = 0; j < BASEBALL_NUMBERS_SIZE; j++) {
+				BaseballNumber baseballNumber = baseballNumbers.get(i);
+				BaseballNumber targetBaseballNumber = targetBaseballNumbers.baseballNumbers.get(i);
+				if (baseballNumber.isSame(targetBaseballNumber) && i == j) {
+					strikeCount++;
+					continue;
+				}
+				if (baseballNumber.isSame(targetBaseballNumber) && i != j) {
+					ballCount++;
+				}
+			}
+		}
+		return new BaseballRoundResult(strikeCount, ballCount);
+	}
 }
