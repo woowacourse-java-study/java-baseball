@@ -4,8 +4,6 @@ import baseball.common.validator.ParamsValidator;
 import baseball.service.NumberProvider;
 import baseball.service.RoundResultConsumer;
 
-import java.util.List;
-
 public class BaseballGame {
 	
 	private final BaseballRound baseballRound;
@@ -23,11 +21,11 @@ public class BaseballGame {
 		do {
 			baseballRoundResult = baseballRound.playOneRound(numberProvider);
 			roundResultConsumer.consume(baseballRoundResult);
-		} while (shouldContinuePlay(baseballRoundResult));
+		} while (shouldContinueMoreRound(baseballRoundResult));
 		return baseballRoundResult;
 	}
 	
-	private static boolean shouldContinuePlay(BaseballRoundResult baseballRoundResult) {
+	private static boolean shouldContinueMoreRound(BaseballRoundResult baseballRoundResult) {
 		return !BaseballNumbers.isAllStrike(baseballRoundResult.strikeCount());
 	}
 }

@@ -3,6 +3,8 @@ package baseball.domain;
 import baseball.common.exception.BaseballExceptions;
 import baseball.service.numberPicker.NumberPicker;
 
+import java.util.Objects;
+
 public class BaseballNumber {
 	
 	private static final int MIN_NUMBER = 1;
@@ -30,7 +32,15 @@ public class BaseballNumber {
 		return new BaseballNumber(number);
 	}
 	
-	public boolean isSame(BaseballNumber baseballNumber) {
-		return this.number == baseballNumber.number;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof BaseballNumber that)) return false;
+		return number == that.number;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(number);
 	}
 }
