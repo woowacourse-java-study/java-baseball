@@ -19,8 +19,8 @@ public class OutputHandler {
 		writer.write(output);
 	}
 	
-	public void handleBaseballEnd() {
-		String output = "%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n".formatted(BaseballNumbers.BASEBALL_NUMBERS_SIZE);
+	public void handleBaseballEnd(BaseballRoundResult baseballRoundResult) {
+		String output = "%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n".formatted(baseballRoundResult.strikeCount());
 		writer.write(output);
 	}
 }
