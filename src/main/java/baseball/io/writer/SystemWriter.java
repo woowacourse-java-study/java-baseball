@@ -3,7 +3,7 @@ package baseball.io.writer;
 public class SystemWriter implements Writer {
 	
 	@Override
-	public void writeLine(final String value) {
-		System.out.println(value);
+	public void write(final String value) {
+		System.out.print(value);
 	}
 }
