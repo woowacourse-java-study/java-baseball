@@ -1,4 +1,4 @@
-package baseball.common.retry;
+package baseball.service;
 
 import baseball.common.exception.BaseballExceptions;
 import baseball.common.exception.ExceptionHandler;

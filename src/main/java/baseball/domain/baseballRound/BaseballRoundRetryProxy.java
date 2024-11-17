@@ -1,6 +1,6 @@
 package baseball.domain.baseballRound;
 
-import baseball.common.retry.RetryHandler;
+import baseball.service.RetryHandler;
 import baseball.domain.BaseballRoundResult;
 import baseball.service.NumberProvider;
 

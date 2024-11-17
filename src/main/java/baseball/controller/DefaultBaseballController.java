@@ -1,9 +1,8 @@
 package baseball.controller;
 
-import baseball.domain.BaseballNumbers;
+import baseball.domain.BaseballGame;
 import baseball.domain.BaseballRoundResult;
 import baseball.io.input.InputHandler;
-import baseball.domain.BaseballGame;
 import baseball.io.output.OutputHandler;
 import baseball.service.baseballGameFactory.BaseballGameFactory;
 

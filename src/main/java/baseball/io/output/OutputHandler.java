@@ -6,12 +6,12 @@ import baseball.io.writer.Writer;
 
 public class OutputHandler {
 	
-	private final OutputParser outputParser;
 	private final Writer writer;
+	private final OutputParser outputParser;
 	
-	public OutputHandler(OutputParser outputParser, Writer writer) {
-		this.outputParser = outputParser;
+	public OutputHandler(Writer writer, OutputParser outputParser) {
 		this.writer = writer;
+		this.outputParser = outputParser;
 	}
 	
 	public void handleRoundResult(BaseballRoundResult baseballRoundResult) {

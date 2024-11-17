@@ -1,11 +1,11 @@
 package baseball.service.baseballGameFactory;
 
-import baseball.common.retry.RetryHandler;
 import baseball.domain.BaseballGame;
 import baseball.domain.BaseballNumbers;
 import baseball.domain.baseballRound.BaseballRound;
 import baseball.domain.baseballRound.BaseballRoundRetryProxy;
 import baseball.domain.baseballRound.DefaultBaseballRound;
+import baseball.service.RetryHandler;
 import baseball.service.numberPicker.NumberPicker;
 
 public class DefaultBaseballGameFactory implements BaseballGameFactory {

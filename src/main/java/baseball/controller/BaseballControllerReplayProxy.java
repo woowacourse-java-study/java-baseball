@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.common.retry.RetryHandler;
+import baseball.service.RetryHandler;
 import baseball.io.input.InputHandler;
 
 public class BaseballControllerReplayProxy implements BaseballController {
