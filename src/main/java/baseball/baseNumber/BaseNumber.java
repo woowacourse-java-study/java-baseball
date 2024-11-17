@@ -21,9 +21,7 @@ public class BaseNumber {
         Set<Integer> distinctNumbers = new HashSet<>();
         while(distinctNumbers.size() < Rules.BASE_NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!distinctNumbers.contains(randomNumber)) {
-                distinctNumbers.add(randomNumber);
-            }
+            distinctNumbers.add(randomNumber);
         }
         return new BaseNumber(distinctNumbers.stream().toList());
     }
