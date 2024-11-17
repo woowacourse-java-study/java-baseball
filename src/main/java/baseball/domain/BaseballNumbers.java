@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BaseballNumbers {
 	
-	private static final int BASEBALL_NUMBERS_SIZE = 3;
+	public static final int BASEBALL_NUMBERS_SIZE = 3;
 	
 	private final List<BaseballNumber> baseballNumbers;
 	
@@ -37,6 +37,10 @@ public class BaseballNumbers {
 		return new BaseballNumbers(numbers.stream()
 				.map(BaseballNumber::from)
 				.toList());
+	}
+	
+	public static boolean isAllStrike(int strikeCount) {
+		return BASEBALL_NUMBERS_SIZE == strikeCount;
 	}
 	
 	public BaseballRoundResult getRoundResult(BaseballNumbers targetBaseballNumbers) {
