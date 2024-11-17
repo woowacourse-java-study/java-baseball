@@ -29,4 +29,8 @@ public class BaseballNumber {
 	public static BaseballNumber from(int number) {
 		return new BaseballNumber(number);
 	}
+	
+	public boolean isSame(BaseballNumber baseballNumber) {
+		return this.number == baseballNumber.number;
+	}
 }
