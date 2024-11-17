@@ -52,7 +52,15 @@ public class GameController {
         List<Integer> numbers = new ArrayList<>();
         validateLength(input);
         addNumbers(numbers, input);
+        validateDistinct(numbers);
         return numbers;
+    }
+
+    private void validateDistinct(List<Integer> numbers) {
+        Set<Integer> distictNumber = new HashSet<>(numbers);
+        if (numbers.size() != distictNumber.size()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void addNumbers(List<Integer> numbers, String input) {
