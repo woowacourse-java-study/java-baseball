@@ -4,9 +4,9 @@ import baseball.common.exception.BaseballExceptions;
 import baseball.common.validator.ParamsValidator;
 import baseball.service.numberPicker.NumberPicker;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class BaseballNumbers {
 	
@@ -34,11 +34,14 @@ public class BaseballNumbers {
 	}
 	
 	public static BaseballNumbers from(NumberPicker numberPicker) {
-		Set<BaseballNumber> baseballNumbers = new HashSet<>();
+		List<BaseballNumber> baseballNumbers = new ArrayList<>();
 		while(baseballNumbers.size() < BASEBALL_NUMBERS_COUNT) {
-			baseballNumbers.add(BaseballNumber.from(numberPicker));
+			BaseballNumber baseballNumber = BaseballNumber.from(numberPicker);
+			if (!baseballNumbers.contains(baseballNumber)) {
+				baseballNumbers.add(baseballNumber);
+			}
 		}
-		return new BaseballNumbers(baseballNumbers.stream().toList());
+		return new BaseballNumbers(baseballNumbers);
 	}
 	
 	public static BaseballNumbers from(List<Integer> numbers) {
