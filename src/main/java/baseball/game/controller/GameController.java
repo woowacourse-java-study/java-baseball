@@ -31,10 +31,15 @@ public class GameController {
     private void playSingle() {
         outputView.print(OutputMessage.GAME_START);
         BaseNumber number = BaseNumber.create();
-        String input = inputview.promptUserInput(InputMessage.GUESS_BASE_NUMBER);
-        List<Integer> inputNumbers = validateGuessNumber(input);
-        GuessNumber guessNumber = GuessNumber.from(inputNumbers);
-        GuessResult guessResult = number.match(guessNumber);
+        GuessResult guessResult = null;
+        do {
+            String input = inputview.promptUserInput(InputMessage.GUESS_BASE_NUMBER);
+            List<Integer> inputNumbers = validateGuessNumber(input);
+            GuessNumber guessNumber = GuessNumber.from(inputNumbers);
+            guessResult = number.match(guessNumber);
+            outputView.print(guessResult);
+        } while(!guessResult.fullStrike());
+
     }
 
     private List<Integer> validateGuessNumber(String input) {
