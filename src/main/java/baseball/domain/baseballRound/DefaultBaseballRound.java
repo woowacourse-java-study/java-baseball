@@ -20,6 +20,6 @@ public class DefaultBaseballRound implements BaseballRound {
 	public BaseballRoundResult playOneRound(NumberProvider numberProvider) {
 		List<Integer> numbers = numberProvider.provide();
 		BaseballNumbers tryBaseballNumbers = BaseballNumbers.from(numbers);
-		return baseballNumbers.getRoundResult(tryBaseballNumbers);
+		return baseballNumbers.calculateStrikeBall(tryBaseballNumbers);
 	}
 }

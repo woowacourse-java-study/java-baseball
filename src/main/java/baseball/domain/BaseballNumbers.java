@@ -51,22 +51,45 @@ public class BaseballNumbers {
 		return BASEBALL_NUMBERS_SIZE == strikeCount;
 	}
 	
-	public BaseballRoundResult getRoundResult(BaseballNumbers targetBaseballNumbers) {
+	public BaseballRoundResult calculateStrikeBall(BaseballNumbers targetBaseballNumbers) {
+		return new BaseballRoundResult(
+				calculateStrikeCount(targetBaseballNumbers),
+				calculateBallCount(targetBaseballNumbers)
+		);
+	}
+	
+	private int calculateStrikeCount(BaseballNumbers targetBaseballNumbers) {
 		int strikeCount = 0;
-		int ballCount = 0;
 		for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
-			for (int j = 0; j < BASEBALL_NUMBERS_SIZE; j++) {
-				BaseballNumber baseballNumber = baseballNumbers.get(i);
-				BaseballNumber targetBaseballNumber = targetBaseballNumbers.baseballNumbers.get(i);
-				if (baseballNumber.equals(targetBaseballNumber) && i == j) {
-					strikeCount++;
-					continue;
-				}
-				if (baseballNumber.equals(targetBaseballNumber) && i != j) {
-					ballCount++;
-				}
+			BaseballNumber baseballNumber = baseballNumbers.get(i);
+			if (targetBaseballNumbers.containsInExactPosition(baseballNumber, i)) {
+				strikeCount++;
 			}
 		}
-		return new BaseballRoundResult(strikeCount, ballCount);
+		return strikeCount;
+	}
+	
+	private int calculateBallCount(BaseballNumbers targetBaseballNumbers) {
+		int ballCount = 0;
+		for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
+			BaseballNumber baseballNumber = baseballNumbers.get(i);
+			if (targetBaseballNumbers.containsInOtherPosition(baseballNumber, i)) {
+				ballCount++;
+			}
+		}
+		return ballCount;
+	}
+	
+	private boolean containsInExactPosition(BaseballNumber baseballNumber, int position) {
+		return baseballNumbers.get(position).equals(baseballNumber);
+	}
+	
+	private boolean containsInOtherPosition(BaseballNumber baseballNumber, int position) {
+		for (int i = 0; i < BASEBALL_NUMBERS_SIZE; i++) {
+			if (baseballNumbers.get(i).equals(baseballNumber) && i != position) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
