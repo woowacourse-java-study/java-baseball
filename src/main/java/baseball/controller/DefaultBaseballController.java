@@ -24,6 +24,7 @@ public class DefaultBaseballController implements BaseballController {
 	
 	@Override
 	public void run() {
+		outputHandler.handleBaseballStart();
 		BaseballGame baseballGame = baseballGameFactory.create();
 		BaseballRoundResult playResult = baseballGame.play(
 				inputHandler::getBaseballNumbers,

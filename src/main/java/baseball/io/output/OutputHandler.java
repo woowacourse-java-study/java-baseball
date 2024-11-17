@@ -14,6 +14,10 @@ public class OutputHandler {
 		this.outputParser = outputParser;
 	}
 	
+	public void handleBaseballStart() {
+		writer.write("숫자 야구 게임을 시작합니다.\n");
+	}
+	
 	public void handleRoundResult(BaseballRoundResult baseballRoundResult) {
 		String output = outputParser.parseRoundResult(baseballRoundResult);
 		writer.write(output);

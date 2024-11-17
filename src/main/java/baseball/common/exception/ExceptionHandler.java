@@ -4,7 +4,7 @@ import baseball.io.writer.Writer;
 
 public class ExceptionHandler {
 	
-	private static final String EXCEPTION_MESSAGE_PREFIX = "\n[ERROR] ";
+	private static final String EXCEPTION_MESSAGE_FORMAT = "[ERROR] %s\n";
 	
 	private final Writer writer;
 	
@@ -13,6 +13,6 @@ public class ExceptionHandler {
 	}
 	
 	public void handleException(final Exception exception) {
-		writer.write(EXCEPTION_MESSAGE_PREFIX + exception.getMessage() + "\n");
+		writer.write(EXCEPTION_MESSAGE_FORMAT.formatted(exception.getMessage()));
 	}
 }
