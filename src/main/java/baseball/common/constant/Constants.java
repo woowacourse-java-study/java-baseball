@@ -7,7 +7,7 @@ public class Constants {
 
 
     public final static String WHITE_SPACE = " ";
-    public final static String STRIKE = "%d스트라이커";
+    public final static String STRIKE = "%d스트라이크";
     public final static String BALL = "%d볼";
     public final static String NOTHING = "낫싱";
 }

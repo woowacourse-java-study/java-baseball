@@ -25,7 +25,8 @@ public class GameController {
                 isContinue = restart();
             }
         } catch (IllegalArgumentException e) {
-            outputView.printErrorMessage(e.getMessage());
+//            outputView.printErrorMessage(e.getMessage());
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 
