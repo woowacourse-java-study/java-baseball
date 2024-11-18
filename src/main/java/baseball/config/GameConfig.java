@@ -13,4 +13,8 @@ public class GameConfig {
     public GameConfig() {
         this.gameComputer = new GameComputer(inputView, outputView);
     }
+
+    public GameComputer getGameComputer() {
+        return gameComputer;
+    }
 }
