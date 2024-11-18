@@ -3,13 +3,23 @@ package baseball.model.domain;
 public class GameNumber {
     private final int number;
 
-    public GameNumber(int number) {
-        this.number = validate(number);
+    public GameNumber(String input) {
+        this.number = parse(input);
+    }
+
+    private int parse(String input) {
+        try {
+            int number = Integer.parseInt(input);
+            validate(number);
+            return number;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("입력값은 숫자여야 합니다.");
+        }
     }
 
     private int validate(int number) {
         if (number < 1 || number > 9) {
-            throw new IllegalArgumentException("숫자는 1에서 9까지 수만 허용 됩니다.");
+            throw new IllegalArgumentException("숫자는 1에서 9까지의 수만 허용됩니다.");
         }
         return number;
     }
