@@ -14,6 +14,15 @@ public class GameComputer {
 
     public void start() {
         outputView.printStartMessage();
+        while (true) {
+            play();
+        }
     }
 
+    private void play() {
+        while (true) {
+            outputView.printNumberPrompt();
+            inputView.getNumber();
+        }
+    }
 }
