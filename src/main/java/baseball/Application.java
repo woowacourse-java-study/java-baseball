@@ -1,13 +1,13 @@
 package baseball;
 
 import baseball.config.GameConfig;
-import baseball.controller.GameComputer;
+import baseball.controller.GameController;
 
 public class Application {
     public static void main(String[] args) {
         GameConfig gameConfig = new GameConfig();
-        GameComputer gameComputer = gameConfig.getGameComputer();
+        GameController gameController = gameConfig.getGameComputer();
 
-        gameComputer.start();
+        gameController.start();
     }
 }

@@ -1,6 +1,6 @@
 package baseball.config;
 
-import baseball.controller.GameComputer;
+import baseball.controller.GameController;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -8,13 +8,13 @@ public class GameConfig {
 
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
-    private final GameComputer gameComputer;
+    private final GameController gameController;
 
     public GameConfig() {
-        this.gameComputer = new GameComputer(inputView, outputView);
+        this.gameController = new GameController(inputView, outputView);
     }
 
-    public GameComputer getGameComputer() {
-        return gameComputer;
+    public GameController getGameComputer() {
+        return gameController;
     }
 }
