@@ -4,11 +4,11 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
 
-    public void getNumber() {
-        readLine();
+    public String getNumber() {
+        return readLine();
     }
 
-    public void askRestart() {
-        readLine();
+    public String askRestart() {
+        return readLine();
     }
 }
