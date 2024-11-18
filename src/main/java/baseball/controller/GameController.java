@@ -25,7 +25,6 @@ public class GameController {
                 isContinue = restart();
             }
         } catch (IllegalArgumentException e) {
-//            outputView.printErrorMessage(e.getMessage());
             throw new IllegalArgumentException(e.getMessage());
         }
     }
@@ -34,7 +33,7 @@ public class GameController {
         boolean isFinish = false;
         ComputerNumbers computerNumbers = init();
         while (!isFinish) {
-            PlayerNumbers playerNumbers =  input();
+            PlayerNumbers playerNumbers = input();
             isFinish = result(computerNumbers, playerNumbers);
         }
         finish();

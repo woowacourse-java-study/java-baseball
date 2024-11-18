@@ -34,7 +34,7 @@ public class ComputerNumbers {
 
         for (int i = 0; i < NUMBERS_SIZE; i++) {
             boolean isStrike = computerNumbers.get(i).equals(playerNumbers.get(i));
-            boolean isBall = !isStrike&&computerNumbers.contains(playerNumbers.get(i));
+            boolean isBall = !isStrike && computerNumbers.contains(playerNumbers.get(i));
             if (isStrike) {
                 strikes++;
             }
