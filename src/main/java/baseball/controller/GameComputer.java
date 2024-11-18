@@ -20,12 +20,15 @@ public class GameComputer {
             play();
             isContinue = restart();
         }
+
     }
 
     private void play() {
-        while (true) {
+        boolean isFinish = true;
+        while (isFinish) {
             String input = input();
         }
+        finish();
     }
 
     private String input() {
@@ -37,5 +40,9 @@ public class GameComputer {
         outputView.printRestartPrompt();
         String input = inputView.askRestart();
         return GameMenu.from(input);
+    }
+
+    private void finish() {
+        outputView.printFinishMessage();
     }
 }
