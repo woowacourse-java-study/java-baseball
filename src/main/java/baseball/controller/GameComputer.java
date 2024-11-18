@@ -24,9 +24,13 @@ public class GameComputer {
 
     private void play() {
         while (true) {
-            outputView.printNumberPrompt();
-            inputView.getNumber();
+            String input = input();
         }
+    }
+
+    private String input() {
+        outputView.printNumberPrompt();
+        return inputView.getNumber();
     }
 
     private boolean restart() {
@@ -34,5 +38,4 @@ public class GameComputer {
         String input = inputView.askRestart();
         return GameMenu.from(input);
     }
-
 }
