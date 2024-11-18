@@ -1,22 +1,20 @@
-package baseball.domain.baseballRound;
+package baseball.domain;
 
 import baseball.common.dto.BaseballRoundResult;
 import baseball.common.validator.ParamsValidator;
-import baseball.domain.BaseballNumbers;
 import baseball.service.NumberProvider;
 
 import java.util.List;
 
-public class DefaultBaseballRound implements BaseballRound {
+public class BaseballRound {
 	
 	private final BaseballNumbers baseballNumbers;
 	
-	public DefaultBaseballRound(BaseballNumbers baseballNumbers) {
+	public BaseballRound(BaseballNumbers baseballNumbers) {
 		ParamsValidator.validateParamsNotNull(baseballNumbers);
 		this.baseballNumbers = baseballNumbers;
 	}
 	
-	@Override
 	public BaseballRoundResult playOneRound(NumberProvider numberProvider) {
 		List<Integer> numbers = numberProvider.provide();
 		BaseballNumbers tryBaseballNumbers = BaseballNumbers.from(numbers);

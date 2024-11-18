@@ -1,10 +1,11 @@
 package baseball.config.controller;
 
+import baseball.config.common.ExceptionHandlerConfig;
 import baseball.config.io.InputHandlerConfig;
 import baseball.config.io.OutputHandlerConfig;
-import baseball.config.service.BaseballGameFactoryConfig;
-import baseball.config.service.RetryHandlerConfig;
+import baseball.config.service.numberPicker.NumberPickerConfig;
 import baseball.controller.BaseballController;
+import baseball.controller.BaseballControllerExceptionHandleProxy;
 import baseball.controller.BaseballControllerReplayProxy;
 import baseball.controller.DefaultBaseballController;
 
@@ -15,19 +16,21 @@ public class DefaultBaseballControllerConfig implements BaseballControllerConfig
 	public DefaultBaseballControllerConfig(
 			InputHandlerConfig inputHandlerConfig,
 			OutputHandlerConfig outputHandlerConfig,
-			RetryHandlerConfig retryHandlerConfig,
-			BaseballGameFactoryConfig baseballGameFactoryConfig
+			NumberPickerConfig numberPickerConfig,
+			ExceptionHandlerConfig exceptionHandlerConfig
 	) {
-		
 		BaseballController defaultBaseballController = new DefaultBaseballController(
 				inputHandlerConfig.getInputHandler(),
 				outputHandlerConfig.getOutputHandler(),
-				baseballGameFactoryConfig.getBaseballGameFactory()
+				numberPickerConfig.getNumberPicker()
 		);
-		this.baseballController = new BaseballControllerReplayProxy(
+		BaseballControllerReplayProxy baseballControllerReplayProxy = new BaseballControllerReplayProxy(
 				defaultBaseballController,
-				inputHandlerConfig.getInputHandler(),
-				retryHandlerConfig.getRetryHandler()
+				inputHandlerConfig.getInputHandler()
+		);
+		this.baseballController = new BaseballControllerExceptionHandleProxy(
+				baseballControllerReplayProxy,
+				exceptionHandlerConfig.getExceptionHandler()
 		);
 	}
 	

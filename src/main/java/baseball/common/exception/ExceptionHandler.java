@@ -12,7 +12,8 @@ public class ExceptionHandler {
 		this.writer = writer;
 	}
 	
-	public void handleException(final Exception exception) {
+	public void handleException(final RuntimeException exception) {
 		writer.write(EXCEPTION_MESSAGE_FORMAT.formatted(exception.getMessage()));
+		throw exception;
 	}
 }
