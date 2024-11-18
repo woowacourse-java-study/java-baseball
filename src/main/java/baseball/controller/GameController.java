@@ -1,16 +1,21 @@
 package baseball.controller;
 
+import baseball.model.domain.ComputerNumbers;
 import baseball.model.domain.GameMenu;
+import baseball.model.domain.GameNumbers;
+import baseball.model.domain.PlayerNumbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
     private final InputView inputView;
     private final OutputView outputView;
+    private final GameNumbers gameNumbers;
 
-    public GameController(InputView inputView, OutputView outputView) {
+    public GameController(InputView inputView, OutputView outputView, GameNumbers gameNumbers) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.gameNumbers = gameNumbers;
     }
 
     public void start() {
@@ -24,9 +29,11 @@ public class GameController {
     }
 
     private void play() {
-        boolean isFinish = true;
-        while (isFinish) {
-            String input = input();
+        boolean isFinish = false;
+        ComputerNumbers computerNumbers = new ComputerNumbers();
+        while (!isFinish) {
+            PlayerNumbers playerNumbers = new PlayerNumbers(input());
+            String result = gameNumbers.calculateResult(computerNumbers, playerNumbers);
         }
         finish();
     }
