@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.model.domain.GameMenu;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -13,9 +14,11 @@ public class GameComputer {
     }
 
     public void start() {
+        boolean isContinue = true;
         outputView.printStartMessage();
-        while (true) {
+        while (isContinue) {
             play();
+            isContinue = restart();
         }
     }
 
@@ -25,4 +28,11 @@ public class GameComputer {
             inputView.getNumber();
         }
     }
+
+    private boolean restart() {
+        outputView.printRestartPrompt();
+        String input = inputView.askRestart();
+        return GameMenu.from(input);
+    }
+
 }
