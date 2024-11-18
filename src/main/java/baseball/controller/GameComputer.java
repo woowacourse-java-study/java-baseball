@@ -12,4 +12,8 @@ public class GameComputer {
         this.outputView = outputView;
     }
 
+    public void start() {
+        outputView.printStartMessage();
+    }
+
 }
