@@ -9,7 +9,7 @@ public class BaseballNumber {
 	
 	private static final int MIN_NUMBER = 1;
 	private static final int MAX_NUMBER = 9;
-
+	
 	private final int number;
 	
 	private BaseballNumber(int number) {

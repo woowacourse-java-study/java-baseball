@@ -36,7 +36,7 @@ public class BaseballNumbers {
 	
 	public static BaseballNumbers from(NumberPicker numberPicker) {
 		List<BaseballNumber> baseballNumbers = new ArrayList<>();
-		while(baseballNumbers.size() < BASEBALL_NUMBERS_COUNT) {
+		while (baseballNumbers.size() < BASEBALL_NUMBERS_COUNT) {
 			BaseballNumber baseballNumber = BaseballNumber.from(numberPicker);
 			if (!baseballNumbers.contains(baseballNumber)) {
 				baseballNumbers.add(baseballNumber);
