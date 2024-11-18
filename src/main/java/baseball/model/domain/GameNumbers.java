@@ -2,6 +2,7 @@ package baseball.model.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class GameNumbers {
@@ -11,11 +12,25 @@ public class GameNumbers {
         this.gameNumbers = parse(input);
     }
 
+    public GameNumbers(Set<Integer> randomNumbers) {
+        this.gameNumbers = parse(randomNumbers);
+    }
+
     private List<GameNumber> parse(String input) {
         List<String> items = List.of(input.split(""));
         List<GameNumber> gameNumbers = new ArrayList<>();
         for (String item : items) {
             GameNumber gameNumber = new GameNumber(item);
+            gameNumbers.add(gameNumber);
+        }
+        validate(gameNumbers);
+        return gameNumbers;
+    }
+
+    private List<GameNumber> parse(Set<Integer> randomNumbers) {
+        List<GameNumber> gameNumbers = new ArrayList<>();
+        for (int number : randomNumbers) {
+            GameNumber gameNumber = new GameNumber(number);
             gameNumbers.add(gameNumber);
         }
         validate(gameNumbers);

@@ -7,6 +7,10 @@ public class GameNumber {
         this.number = parse(input);
     }
 
+    public GameNumber(int number) {
+        this.number = number;
+    }
+
     private int parse(String input) {
         try {
             int number = Integer.parseInt(input);
