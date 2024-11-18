@@ -8,4 +8,7 @@ public class InputView {
         readLine();
     }
 
+    public void askRestart() {
+        readLine();
+    }
 }
