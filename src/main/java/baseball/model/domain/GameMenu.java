@@ -14,10 +14,15 @@ public enum GameMenu {
         this.countinue = countinue;
     }
 
-    public static GameMenu from(String input) {
+    private boolean isCountinue() {
+        return countinue;
+    }
+
+    public static boolean from(String input) {
         return Arrays.stream(GameMenu.values())
                 .filter(menu -> menu.code.equals(input))
                 .findFirst()
+                .map(GameMenu::isCountinue)
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 메뉴 선택입니다."));
     }
 }
