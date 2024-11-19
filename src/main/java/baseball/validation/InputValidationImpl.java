@@ -21,7 +21,7 @@ public class InputValidationImpl implements InputValidation {
     @Override
     public void validateZero(String number) {
         if((number.length()!=RANGE_VALIDATE_NUMBER)){
-            throw new IllegalArgumentException(ErrorMessages.INVALID_NUMBER_RANGE);
+            throw new IllegalArgumentException(ErrorMessages.INVALID_INPUT_COUNT);
         }
     }
 
