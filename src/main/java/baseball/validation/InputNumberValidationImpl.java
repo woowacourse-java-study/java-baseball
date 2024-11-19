@@ -2,6 +2,9 @@ package baseball.validation;
 
 import baseball.utils.ErrorMessages;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class InputNumberValidationImpl implements InputNumberValidation {
     private static final String RANGE_VALIDATE_SINGLE_NUMBER = "0";
     private static final int RANGE_VALIDATE_NUMBER =3;
@@ -10,6 +13,7 @@ public class InputNumberValidationImpl implements InputNumberValidation {
         validateZero(number);
         validateRange(number);
         validateNumber(number);
+        validateUniqueDigits(number);
         return number;
     }
     @Override
@@ -32,6 +36,15 @@ public class InputNumberValidationImpl implements InputNumberValidation {
           Integer.parseInt(number);
         }catch (NumberFormatException e){
             throw new IllegalArgumentException(ErrorMessages.INVALID_NUMBER_FORMAT);
+        }
+    }
+    @Override
+    public void validateUniqueDigits(String number) {
+        Set<Character> uniqueDigits = new HashSet<>();
+        for (char digit : number.toCharArray()) {
+            if (!uniqueDigits.add(digit)) {
+                throw new IllegalArgumentException(ErrorMessages.INVALID_DUPLICATE_NUMBER);
+            }
         }
     }
 }

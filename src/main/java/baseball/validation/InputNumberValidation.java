@@ -8,4 +8,6 @@ public interface InputNumberValidation {
     void validateZero(String number);
 
     void validateNumber(String number);
+
+    void validateUniqueDigits(String number);
 }
