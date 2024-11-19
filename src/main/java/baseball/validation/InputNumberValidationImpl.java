@@ -13,14 +13,14 @@ public class InputNumberValidationImpl implements InputNumberValidation {
         return number;
     }
     @Override
-    public void validateRange(String number) {
+    public void validateZero(String number) {
         if(number.contains(RANGE_VALIDATE_SINGLE_NUMBER)) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_NUMBER_RANGE);
         }
     }
 
     @Override
-    public void validateZero(String number) {
+    public void validateRange(String number) {
         if((number.length()!=RANGE_VALIDATE_NUMBER)){
             throw new IllegalArgumentException(ErrorMessages.INVALID_INPUT_COUNT);
         }
