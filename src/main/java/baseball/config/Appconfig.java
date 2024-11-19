@@ -3,8 +3,8 @@ package baseball.config;
 import baseball.controller.BaseballController;
 import baseball.generator.BaseballNumberGenerator;
 import baseball.generator.BaseballNumberGeneratorImpl;
-import baseball.validation.InputValidation;
-import baseball.validation.InputValidationImpl;
+import baseball.validation.InputNumberValidation;
+import baseball.validation.InputNumberValidationImpl;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -13,8 +13,8 @@ public class Appconfig {
         return new BaseballController(inputView(), outputView(), inputValidation(),baseballNumberGenerator());
     }
 
-    public InputValidation inputValidation(){
-        return new InputValidationImpl();
+    public InputNumberValidation inputValidation(){
+        return new InputNumberValidationImpl();
     }
 
     public BaseballNumberGenerator baseballNumberGenerator(){

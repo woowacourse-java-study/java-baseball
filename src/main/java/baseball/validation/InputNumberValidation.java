@@ -1,6 +1,6 @@
 package baseball.validation;
 
-public interface InputValidation {
+public interface InputNumberValidation {
     String validate(String number);
 
     void validateRange(String number);

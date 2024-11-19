@@ -2,7 +2,7 @@ package baseball.validation;
 
 import baseball.utils.ErrorMessages;
 
-public class InputValidationImpl implements InputValidation {
+public class InputNumberValidationImpl implements InputNumberValidation {
     private static final String RANGE_VALIDATE_SINGLE_NUMBER = "0";
     private static final int RANGE_VALIDATE_NUMBER =3;
     @Override
