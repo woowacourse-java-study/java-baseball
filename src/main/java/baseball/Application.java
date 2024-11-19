@@ -1,7 +1,12 @@
 package baseball;
 
+import baseball.config.Appconfig;
+import baseball.controller.BaseballController;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Appconfig appConfig = new Appconfig();
+        BaseballController baseballController = appConfig.baseballController();
+        baseballController.start();
     }
 }
