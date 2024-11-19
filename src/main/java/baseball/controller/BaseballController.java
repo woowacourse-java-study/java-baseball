@@ -28,28 +28,42 @@ public class BaseballController {
     }
 
     public void start() {
-        List<Integer> baseballNumber = baseballNumberGeneratorImpl.generate();
-        Baseball baseball = new Baseball(baseballNumber);
         inputView.printBaseballGameStart();
-
-        Result result;
         boolean keepPlaying = true;
         while (keepPlaying) {
-            do {
-                String userNumber = inputNumberValidationImpl.validate(inputView.inputBasebalNumber());
-                result = new Referee(baseball, userNumber).getResult();
-                ResultDTO resultDTO = new ResultDTO(result.getStrikes(), result.getBalls());
-                outputView.printResult(resultDTO);
-            } while (result.getStrikes() != 3);
-
-            int userChoice = inputUserChoiceValidation.validate(inputView.restartGame());
-            if (userChoice == 1) {
-                baseballNumber = baseballNumberGeneratorImpl.generate();
-                baseball = new Baseball(baseballNumber);
-            }
-            if (userChoice == 2) {
-                keepPlaying = false;
-            }
+            keepPlaying = playGame();
         }
+    }
+
+    private boolean playGame() {
+        List<Integer> baseballNumber = baseballNumberGeneratorImpl.generate();
+        Baseball baseball = new Baseball(baseballNumber);
+        boolean gameFinished = false;
+
+        while (!gameFinished) {
+            gameFinished = playTurn(baseball);
+        }
+
+        return processUserChoice();
+    }
+
+    private boolean playTurn(Baseball baseball) {
+        String userNumber = inputNumberValidationImpl.validate(inputView.inputBasebalNumber());
+        Result result = new Referee(baseball, userNumber).getResult();
+        ResultDTO resultDTO = new ResultDTO(result.getStrikes(), result.getBalls());
+        outputView.printResult(resultDTO);
+
+        return result.getStrikes() == 3;
+    }
+
+    private boolean processUserChoice() {
+        int userChoice = inputUserChoiceValidation.validate(inputView.restartGame());
+        if (userChoice == 1) {
+            return true;
+        }
+        if (userChoice == 2) {
+            return false;
+        }
+        return false;
     }
 }
