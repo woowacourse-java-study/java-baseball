@@ -1,8 +1,10 @@
 package baseball.controller;
 
+import baseball.dto.ResultDTO;
 import baseball.generator.BaseballNumberGenerator;
 import baseball.model.Baseball;
 import baseball.model.Referee;
+import baseball.model.Result;
 import baseball.validation.InputValidation;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -27,7 +29,8 @@ public class BaseballController {
         List<Integer> baseballNumber = baseballNumberGeneratorImpl.generate();
         Baseball baseball = new Baseball(baseballNumber);
         String UserNumber = inputValidationImpl.validate(inputView.inputBasebalNumber());
-        Referee referee = new Referee(baseball, UserNumber);
-
+        Result result = new Referee(baseball, UserNumber).getResult();
+        ResultDTO resultDTO = new ResultDTO(result.getStrikes(), result.getBalls());
+        outputView.printResult(resultDTO);
     }
 }
