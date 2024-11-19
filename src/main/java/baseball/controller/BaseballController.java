@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.generator.BaseballNumberGenerator;
-import baseball.generator.BaseballNumberGeneratorImpl;
+import baseball.model.Baseball;
 import baseball.validation.InputValidation;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -24,6 +24,7 @@ public class BaseballController {
 
     public void start() {
         List<Integer> baseballNumber = baseballNumberGeneratorImpl.generate();
+        Baseball baseball = new Baseball(baseballNumber);
         inputValidationImpl.vlalidate(inputView.inputBasebalNumber());
 
     }
