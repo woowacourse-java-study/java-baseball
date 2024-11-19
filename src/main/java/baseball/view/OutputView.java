@@ -8,14 +8,13 @@ public class OutputView {
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String STRIKE_MESSAGE_FORMAT = "%d스트라이크";
     private static final String BALL_MESSAGE_FORMAT = "%d볼 ";
-    private static final String GAME_OVER_MESSAGE = "게임 종료";
+    private static final String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final int MAX_STRIKES = 3;
 
     public void printResult(ResultDTO result) {
         int strikes = result.getStrikes();
         int balls = result.getBalls();
 
-        // 출력 로직만 처리
         if (strikes == 0 && balls == 0) {
             System.out.println(NOTHING_MESSAGE);
         }

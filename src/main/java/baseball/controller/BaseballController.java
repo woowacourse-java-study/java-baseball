@@ -28,9 +28,14 @@ public class BaseballController {
     public void start() {
         List<Integer> baseballNumber = baseballNumberGeneratorImpl.generate();
         Baseball baseball = new Baseball(baseballNumber);
-        String UserNumber = inputValidationImpl.validate(inputView.inputBasebalNumber());
-        Result result = new Referee(baseball, UserNumber).getResult();
-        ResultDTO resultDTO = new ResultDTO(result.getStrikes(), result.getBalls());
-        outputView.printResult(resultDTO);
+        inputView.printBaseballGameStart();
+
+        Result result;
+        do {
+            String userNumber = inputValidationImpl.validate(inputView.inputBasebalNumber());
+            result = new Referee(baseball, userNumber).getResult();
+            ResultDTO resultDTO = new ResultDTO(result.getStrikes(), result.getBalls());
+            outputView.printResult(resultDTO);
+        } while (result.getStrikes() != 3);
     }
 }
