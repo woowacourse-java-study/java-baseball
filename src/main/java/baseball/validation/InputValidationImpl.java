@@ -6,10 +6,11 @@ public class InputValidationImpl implements InputValidation {
     private static final String RANGE_VALIDATE_SINGLE_NUMBER = "0";
     private static final int RANGE_VALIDATE_NUMBER =3;
     @Override
-    public int vlalidate(String number) {
+    public String validate(String number) {
         validateZero(number);
         validateRange(number);
-        return validateNumber(number);
+        validateNumber(number);
+        return number;
     }
     @Override
     public void validateRange(String number) {
@@ -26,9 +27,9 @@ public class InputValidationImpl implements InputValidation {
     }
 
     @Override
-    public int validateNumber(String number) {
+    public void validateNumber(String number) {
         try {
-            return Integer.parseInt(number);
+          Integer.parseInt(number);
         }catch (NumberFormatException e){
             throw new IllegalArgumentException(ErrorMessages.INVALID_NUMBER_FORMAT);
         }

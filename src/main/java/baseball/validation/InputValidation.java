@@ -1,11 +1,11 @@
 package baseball.validation;
 
 public interface InputValidation {
-    int vlalidate(String number);
+    String validate(String number);
 
     void validateRange(String number);
 
     void validateZero(String number);
 
-    int validateNumber(String number);
+    void validateNumber(String number);
 }
