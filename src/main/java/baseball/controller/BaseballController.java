@@ -47,7 +47,7 @@ public class BaseballController {
                 baseballNumber = baseballNumberGeneratorImpl.generate();
                 baseball = new Baseball(baseballNumber);
             }
-            if (userChoice == 0) {
+            if (userChoice == 2) {
                 keepPlaying = false;
             }
         }

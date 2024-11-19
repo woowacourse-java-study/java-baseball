@@ -11,7 +11,7 @@ public class InputUserChoiceValidationImpl implements InputUserChoiceValidation{
     }
     @Override
     public void validateRange(String number) {
-        if (!number.equals("0") && !number.equals("1")) {
+        if (!number.equals("1") && !number.equals("2")) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_CHOICE_RANGE);
         }
     }

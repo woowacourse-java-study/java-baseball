@@ -19,10 +19,7 @@ public class OutputView {
             System.out.println(NOTHING_MESSAGE);
         }
 
-        if (strikes == MAX_STRIKES) {
-            System.out.println(String.format(STRIKE_MESSAGE_FORMAT, strikes));
-            System.out.println(GAME_OVER_MESSAGE);
-        }
+
 
         if (strikes > 0 || balls > 0) {
             StringBuilder resultMessage = new StringBuilder();
@@ -33,6 +30,10 @@ public class OutputView {
                 resultMessage.append(String.format(STRIKE_MESSAGE_FORMAT, strikes));
             }
             System.out.println(resultMessage.toString().trim());
+            if (strikes == MAX_STRIKES) {
+                System.out.println(GAME_OVER_MESSAGE);
+            }
+
         }
     }
 }
